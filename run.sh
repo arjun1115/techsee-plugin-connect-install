@@ -1,30 +1,68 @@
 #!/bin/bash
 
 echo ""
-echo "Script to autodeply infra using aws cdk"
+echo "Script to auto deply or destroy the infra using aws cdk ..."
 echo ""
 
-read -p "Enter bucket name where code is stored: " BUCKETNAME
+echo "Enter your choice (small letters only) i.e."
+echo "Type 'install' for installation or 'destroy' to delete."
+echo ""
+read -p "Type your choice: " CHOICE
 echo ""
 
-if [[ "$BUCKETNAME" == "" ]]
+if [[ "$CHOICE" == "" ]]
 then
-echo "You forgot to enter bucket name"
+echo "You did not enter anything. Please run script and enter your choice."
 exit
 else
-    BUCKETCHECK=$(aws s3 ls | awk '{print $3}' | grep $BUCKETNAME)
-    if [[ "$BUCKETCHECK" == "$BUCKETNAME" ]]
+    if [[ "$CHOICE" == "install" ]]
     then
-        echo "Bucket exists. Now performing the steps for deployment ..."
-        aws s3 cp s3://$BUCKETNAME/techsee.zip .
+        echo "Performing the steps for deployment ..."
+        echo ""
+        echo "Performing unzip to extract code ..."
+        echo ""
         unzip techsee.zip
+        echo ""
         cd techsee
+        echo ""
+        echo "Install cdk dependencies ..."
+        echo ""
         npm install
+        echo ""
         sudo npm install -g aws-cdk
+        echo ""
         cdk bootstrap
+        echo ""
+        echo "Deploying the infrastructure ..."
+        echo ""
         npm run deploy
+        echo ""
+        echo "Infrastructure deployment completed. Please perform the final steps manually ..."
+    elif [[ "$CHOICE" == "destroy" ]]
+    then
+        echo "You have selected to delete the infrastructure."
+        echo "This process is irreversible once started."
+        echo ""
+        echo "If you are sure please type 'yes' for continue to 'no' to cancel it"
+        echo ""
+        read -p "Type 'yes' or 'no' here: " OPTION
+        if [[ "$OPTION" == "yes" ]]
+        then
+            echo "Process to delete the infra started ..."
+            echo ""
+            npm run destroy
+            echo ""
+            echo "Infra is deleted ..."
+        elif [[ "$OPTION" == "no" ]]
+        then
+            echo "You have made the right choice. Exiting now ..."
+            exit
+        else
+            echo "You have not entered anything so exiting ..."
+            exit
+        fi
     else
-        echo "Bucket does not exist. Please re check."
+        echo "You did not enter the right choice. Please re check the option or spell correct ..."
         exit
     fi
 fi
