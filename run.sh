@@ -12,7 +12,7 @@ echo ""
 
 if [[ "$CHOICE" == "" ]]
 then
-echo "You did not enter anything. Please run script and enter your choice."
+echo "You did not enter anything. Please re run script and enter your choice."
 exit
 else
     if [[ "$CHOICE" == "install" ]]
@@ -22,8 +22,6 @@ else
         echo "Performing unzip to extract code ..."
         echo ""
         unzip techsee.zip
-        echo ""
-        cd techsee
         echo ""
         echo "Install cdk dependencies ..."
         echo ""
@@ -41,11 +39,13 @@ else
     elif [[ "$CHOICE" == "destroy" ]]
     then
         echo "You have selected to delete the infrastructure."
+        echo ""
         echo "This process is irreversible once started."
         echo ""
-        echo "If you are sure please type 'yes' for continue to 'no' to cancel it"
+        echo "If you are sure please type 'yes' for continue or 'no' to cancel it"
         echo ""
         read -p "Type 'yes' or 'no' here: " OPTION
+        echo ""
         if [[ "$OPTION" == "yes" ]]
         then
             echo "Process to delete the infra started ..."
