@@ -12,7 +12,7 @@ const ResourceName = {
     S3_PROVISIONING_POLICY: "tscc-s3-provisioning-policy",
     S3_ACTIVATION_POLICY: "tscc-s3-activation-policy",
     SSO_POLICY: "tscc-sso-policy",
-    WEB_APP_STACK: "tscc-web-app-stack-1",
+    WEB_APP_STACK: "tscc-web-app-stack",
     CONFIG_STACK: "tscc-config-stack",
     SSO_STACK: "tscc-sso-stack",
 };
