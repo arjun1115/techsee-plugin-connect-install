@@ -1,4 +1,8 @@
-# Welcome to your CDK TypeScript project
+# For new Updates in Package
+* create new build of react frontend application from `https://github.com/TechSeeDev/Techsee-Plugin-Connect`
+* copy that build and replace with the `build` folder inside `./resources`
+* push the code to main branch
+* Now we need to install the package again
 
 This is a blank project for CDK development with TypeScript.
 

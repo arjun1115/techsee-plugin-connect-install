@@ -85,11 +85,7 @@ object-assign
  */
 
 /**
-<<<<<<<< HEAD:resources/build/static/js/main.bd85ade8.js.LICENSE.txt
  * React Router v6.6.2
-========
- * React Router v6.6.1
->>>>>>>> fc07b89c15eb43b3ce6ba3d5d9f1fe858b6eac0e:resources/build/static/js/main.27d2d35e.js.LICENSE.txt
  *
  * Copyright (c) Remix Software Inc.
  *
